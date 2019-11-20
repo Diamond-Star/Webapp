@@ -21,7 +21,7 @@
   $.getJSON( flickerAPI
   })
     .done(function( data ) {
-     print(data);
+     print(5);
           return false;
         }
       });
