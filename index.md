@@ -2,31 +2,24 @@
 <html>
 <body>
 
-<h2>The XMLHttpRequest Object</h2>
+<h2>Use the XMLHttpRequest to get the content of a file.</h2>
+<p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
 
-<h3>Start typing a name in the input field below:</h3>
-
-<p>Suggestions: <span id="txtHint"></span></p> 
-
-<p>First name: <input type="text" id="txt1" onkeyup="showHint(this.value)"></p>
+<p id="demo"></p>
 
 <script>
-function showHint(str) {
-  var xhttp;
-  if (str.length == 0) { 
-    document.getElementById("txtHint").innerHTML = "";
-    return;
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myObj = JSON.parse(this.responseText);
+    document.getElementById("demo").innerHTML = myObj.data;
   }
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-  };
-  xhttp.open("GET", "http://mytest1000.000webhostapp.com/index.php?q="+str, true);
-  xhttp.send();   
-}
+};
+xmlhttp.open("GET", "http://mytest1000.000webhostapp.com/index.php?name=pen", true);
+xmlhttp.send();
 </script>
+
+
 
 </body>
 </html>
