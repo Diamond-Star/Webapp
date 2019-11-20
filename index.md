@@ -2,20 +2,18 @@
 <html>
 <body>
 
-<h2>Use the XMLHttpRequest to get the content of a file.</h2>
-<p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
-
-<p id="demo">demo</p>
-
 <script>
-var xmlhttp = new XMLHttpRequest();
-
-    var myObj = JSON.parse(this.responseText);
-    document.getElementById("demo").innerHTML = myObj.data;
-  
-
-xmlhttp.open("GET", "http://mytest1000.000webhostapp.com/index.php?name=pen", true);
-xmlhttp.send();
+$.getJSON( "http://mytest1000.000webhostapp.com/index.php?name=pen", function( data ) {
+  var items = [];
+  $.each( data, function( key, val ) {
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
 </script>
 
 
