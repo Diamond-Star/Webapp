@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Rest API Client Side Demo</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
+<html>
 <body>
 
-<div class="container">
-  <h2>Rest API Client Side Demo</h2>
-  <form class="form-inline" action="http://mytest1000.000webhostapp.com/index.php" method="POST">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" name="name" class="form-control"  placeholder="Enter Product Name" required/>
-    </div>
-    <button type="submit" name="submit" class="btn btn-default">Submit</button>
-  </form>
-  <p>&nbsp;</p>
-  <h3>
-  <?php
-	// Refer above PHP code
-   ?>
-  </h3>
-</div>
+<h2>The XMLHttpRequest Object</h2>
+
+<h3>Start typing a name in the input field below:</h3>
+
+<p>Suggestions: <span id="txtHint"></span></p> 
+
+<p>First name: <input type="text" id="txt1" onkeyup="showHint(this.value)"></p>
+
+<script>
+function showHint(str) {
+  var xhttp;
+  if (str.length == 0) { 
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "http://mytest1000.000webhostapp.com/index.php?q="+str, true);
+  xhttp.send();   
+}
+</script>
+
 </body>
 </html>
