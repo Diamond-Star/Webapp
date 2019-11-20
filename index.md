@@ -5,7 +5,7 @@
 <h2>Use the XMLHttpRequest to get the content of a file.</h2>
 <p>The content is written in JSON format, and can easily be converted into a JavaScript object.</p>
 
-<p id="demo"></p>
+<p id="demo">demo</p>
 
 <script>
 var xmlhttp = new XMLHttpRequest();
