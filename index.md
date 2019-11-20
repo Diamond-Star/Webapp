@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Rest API Client Side Demo</h2>
-  <form class="form-inline" action="" method="POST">
+  <form class="form-inline" action="http://mytest1000.000webhostapp.com/index.php" method="POST">
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" name="name" class="form-control"  placeholder="Enter Product Name" required/>
